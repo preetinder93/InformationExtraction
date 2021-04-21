@@ -12,11 +12,13 @@ def getTrainingSet(csvPath):
     trainingRowMask = '["*text*",{"entities":[[*corporation_start*,*corporation_end*,"corporation"],[*corporation_number_start*,*corporation_number_start*,"corporation_number"],[*file_date_start*,*file_date_end*,"file_date"]]}]'
     trainingSet = []
     for row in taggedData:
+        #print(str(row[0]))
         #tempRow = trainingRowMask.replace('*text*',str(row[0])).replace('*recStart*',str(row[2])).replace('*recEnd*',str(row[3])).replace('*givStart*',str(row[5])).replace('*givEnd*',str(row[6])).replace('*relStart*',str(row[8])).replace('*relEnd*',str(row[9])).replace('*streetStart*',str(row[11])).replace('*streetEnd*',str(row[12])).replace('*cityStart*',str(row[14])).replace('*cityEnd*',str(row[15])).replace('*provStart*',str(row[17])).replace('*provEnd*',str(row[18])).replace('*postalStart*',str(row[20])).replace('*postalEnd*',str(row[21]))        
         tempRow = trainingRowMask.replace('*text*',str(row[0])).replace('*corporation_start*',str(row[2])).replace('*corporation_end*',str(row[3])).replace('*corporation_number_start*',str(row[5])).replace('*corporation_number_end*',str(row[6])).replace('*file_date_start*',str(row[8])).replace('*file_date_end*',str(row[9]))
         #print(str(row[0]))
         tempRowJson = json.loads(tempRow)
         trainingSet.append(tempRowJson)
+        print('='*80)
     
     #print(trainingSet)
     #print('='*80)

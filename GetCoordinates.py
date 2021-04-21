@@ -11,18 +11,21 @@ def generateTaggedData(csvPath):
     #print('Inside generateTaggedData function')
     data = pd.read_csv(csvPath)
 
-    columnNames = data.iloc[:,2:]
+    columnNames = data.iloc[:,1:]##if CSV has ID then make this to 2
     taggedData = []
     columnsList = []
     
     for index, row in data.iterrows():
 
+        text = row['text'].replace('\n', ' ').replace('\r', '').replace('\x0C','').replace('!@#$%^&*()[]{};:,./<>?\|`~-=_+', ' ').replace('\\','').replace('\"','')
+
         #Add Text value and Text column in respective lists
-        rowData = [row['text'].replace('\n', ' ').replace('\r', '')]
+        rowData = [text]
         columns = ['text']
         
         for column in columnNames:
-            startIndex, endIndex = getCoordinates(row['text'].replace('\n', ' ').replace('\r', ''),row[column])
+            
+            startIndex, endIndex = getCoordinates(text,row[column])
 
             #Append each column data and its start and end indices
             rowData.append(row[column])
@@ -39,6 +42,6 @@ def generateTaggedData(csvPath):
         
     df = pd.DataFrame(taggedData, columns = [column for column in columnsList])
     
-    df.to_csv("C:\\Users\\preet\\workspace-neon\\InformationExtraction\\Images\\OCROutput\\taggedData2.csv", sep=',', index=False)
+    df.to_csv("C:\\Python\\Training\\GIT\\InformationExtraction\\Images\\OCROutput\\taggedData3.csv", sep=',', index=False)
 
-generateTaggedData('C:\\Users\\preet\\workspace-neon\\InformationExtraction\\Images\\OCROutput\\OCRData.csv')
+#generateTaggedData('C:\\Python\\Training\\GIT\\InformationExtraction\\Images\\OCROutput\\OCRData.csv')
