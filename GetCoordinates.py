@@ -18,11 +18,11 @@ def generateTaggedData(csvPath):
     for index, row in data.iterrows():
 
         #Add Text value and Text column in respective lists
-        rowData = [row['text']]
+        rowData = [row['text'].replace('\n', ' ').replace('\r', '')]
         columns = ['text']
         
         for column in columnNames:
-            startIndex, endIndex = getCoordinates(row['text'],row[column])
+            startIndex, endIndex = getCoordinates(row['text'].replace('\n', ' ').replace('\r', ''),row[column])
 
             #Append each column data and its start and end indices
             rowData.append(row[column])

@@ -63,7 +63,7 @@ with nlp.disable_pipes(*disable_pipes):
             example = Example.from_dict(doc, entity_offsets)
             nlp.update([example], sgd=optimizer)
 
-    nlp.to_disk("C:\\Users\\preet\\workspace-neon\\InformationExtraction\\TrainedModelLibrary\\TrainedModelV8")
+    nlp.to_disk("C:\\Users\\preet\\workspace-neon\\InformationExtraction\\TrainedModelLibrary\\TrainedModelV9")
 t2 = time.localtime()
 current_time = time.strftime("%H:%M:%S", t2)
 print(current_time)

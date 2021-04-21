@@ -4,7 +4,7 @@ import pandas as pd
 
 
 #model = English().from_disk("C:\Python\Training\ML\InformationExtraction\TrainedModelLibrary\TrainedModelV1")
-model = spacy.load("C:\\Users\\preet\\workspace-neon\\InformationExtraction\\TrainedModelLibrary\\TrainedModelV8")
+model = spacy.load("C:\\Users\\preet\\workspace-neon\\InformationExtraction\\TrainedModelLibrary\\TrainedModelV9")
 #model = spacy.load("C:\Python\Training\ML\InformationExtraction\TrainedModelLibrary\modelV2")
 print(model.pipe_names)
 
