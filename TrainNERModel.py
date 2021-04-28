@@ -51,6 +51,12 @@ t = time.localtime()
 current_time = time.strftime("%H:%M:%S", t)
 print(current_time)
 
+#Optional code
+ruler = nlp.add_pipe("entity_ruler")
+patterns = [{"label": "CORPORATE_NUMBER", "pattern": [{"LOWER": "corporate"}, {"LOWER": "number"}, {"IS_SPACE": True}, {"TEXT": {"REGEX": "[C][0-9]{7}"}}]}]
+ruler.add_patterns(patterns)
+
+
 with nlp.disable_pipes(*disable_pipes):
     optimizer = nlp.resume_training()
 
@@ -60,6 +66,7 @@ with nlp.disable_pipes(*disable_pipes):
         for raw_text, entity_offsets in train:
             #print("Entitiy Offset",entity_offsets)
             doc = nlp.make_doc(raw_text)
+            
             example = Example.from_dict(doc, entity_offsets)
             nlp.update([example], sgd=optimizer)
 
