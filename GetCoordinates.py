@@ -42,6 +42,6 @@ def generateTaggedData(csvPath):
         
     df = pd.DataFrame(taggedData, columns = [column for column in columnsList])
     
-    df.to_csv("C:\\Python\\Training\\GIT\\InformationExtraction\\Images\\OCROutput\\taggedData3.csv", sep=',', index=False)
+    df.to_csv("C:\\Python\\Training\\GIT\\InformationExtraction\\Images\\OCROutput\\taggedData6.csv", sep=',', index=False)
 
 #generateTaggedData('C:\\Python\\Training\\GIT\\InformationExtraction\\Images\\OCROutput\\OCRData.csv')

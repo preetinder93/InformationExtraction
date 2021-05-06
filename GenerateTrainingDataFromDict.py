@@ -16,7 +16,7 @@ def getTrainingSet(csvPath):
         entities.append((dataRow[5],dataRow[6],"corporation_num"))
         entities.append((dataRow[8],dataRow[9],"file_date"))
         TRAIN_ROW = [dataRow[0],{"entities": entities}]
-        print(TRAIN_ROW)
+        #print(TRAIN_ROW)
         TRAIN_DATA.append(TRAIN_ROW)
 
     fileName = "C:\\Python\\Training\\GIT\\InformationExtraction\\Images\\OCROutput\\training_dataV3.json"

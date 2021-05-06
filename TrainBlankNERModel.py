@@ -38,6 +38,7 @@ for _, annotations in TRAIN_DATA:
 with nlp.disable_pipes(*other_pipes):
     optimizer = nlp.begin_training()
     for itn in range(2):
+        modelName = 'C:\\Python\\Training\\GIT\\InformationExtraction\\TrainedModelLibrary\\TrainedModelIteration' + str(itn)
         print("Running Iteration = ", str(itn))
         random.shuffle(TRAIN_DATA)
         losses = {}
@@ -46,5 +47,6 @@ with nlp.disable_pipes(*other_pipes):
             doc = nlp.make_doc(text)
             example = Example.from_dict(doc, annotations)
             nlp.update([example], drop=0.2,sgd=optimizer,losses=losses)
-    nlp.to_disk("C:\\Python\\Training\\GIT\\InformationExtraction\\TrainedModelLibrary\\TrainedModelV18")
+        print(losses)
+        nlp.to_disk(modelName)
                 
